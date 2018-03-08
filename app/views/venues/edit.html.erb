@@ -1,0 +1,18 @@
+<h1>Edit Venue</h1>
+
+<%= form_for @venue do |f| %>
+  Name of Event: <%= f.text_field :name %><br />
+  Region: <%= f.text_field :location %><br />
+  Address: <%= f.text_field :address %><br />
+  Phone: <%= f.phone_field :phone %> <br>
+  Email: <%= f.email_field :email %> <br>
+  Booking Agent: <%= f.text_field :poc %> <br>
+  Description: <%= f.text_area :description %> <br>
+  Related Links: <%= f.url_field :link %> <br>
+
+  <%= f.submit %>
+<% end %>
+<%= link_to 'Delete', venue_path, method: :delete, data: {confirm: 'Are you sure?'} %>
+<button>
+  <%= link_to 'Cancel', venue %>
+</button>

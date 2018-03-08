@@ -1,0 +1,11 @@
+<h1><%= @venue.name %></h1>
+
+<%= @venue.name %> <%= @venue.address%><br>
+<%= @venue.phone %> <%= @venue.email %><br>
+Contact <%= @venue.poc %> for Bookings<br>
+<%= @venue.link %><br>
+<%= @venue.description %><br>
+<%= link_to "Gigs at #{@venue.name}", venue_gigs_path(@venue.id) %><br><br>
+<%= link_to 'Back to Venues', venues_path %>
+
+<iframe width="600" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=<%= @venue.address %>&key=<%= ENV['GOOGLE_MAPS_API_KEY'] %>" allowfullscreen></iframe>

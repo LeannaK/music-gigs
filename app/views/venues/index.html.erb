@@ -1,0 +1,12 @@
+<h1>Venues</h1>
+<%= link_to 'Add Venue', new_venue_path %>
+<% @venues.each do |venue| %>
+<ul>
+  <li>
+    <%= link_to venue.name, venue %> 
+    <%= venue.location %>
+    <%= link_to 'Edit', edit_venue_path %>
+    <%= link_to 'Delete', venue_path, method: :delete, data: {confirm: 'Are you sure?'} %>
+  </li>
+<% end %>
+</ul>

@@ -1,0 +1,16 @@
+<h1>Gigs</h1>
+
+<%= link_to 'Add Gig', new_venue_gig_path %>
+
+<ul>
+<% @gigs.each do |gig| %>
+  <li>
+    <%= link_to gig.name, venue_gig_path(@venue.id, gig.id) %> 
+    <%= gig.date %> 
+    <%= link_to 'Edit', edit_venue_gig_path %>
+    <%= link_to 'Delete', venue_gig_path, method: :delete, data: {confirm: 'Are you sure?'} %>
+  </li> 
+<% end %>
+</ul>
+
+<%= link_to "Back to #{@venue.name}", venue_path(@venue.id) %>

@@ -1,0 +1,18 @@
+<h1>Edit Band</h1>
+
+<%= form_for @band do |f| %>
+  Name: <%= f.text_field :name %><br />
+  Genre: <%= f.text_field :genre %><br />
+  Location <%= f.text_field :location %><br />
+  Booking Agent: $<%= f.text_field :poc %> <br>
+  Phone: <%= f.phone_field :phone %> <br>
+  Email: <%= f.email_field :email %> <br>
+  Description: <%= f.text_area :description %> <br>
+  Related Links: <%= f.url_area :link %> <br>
+
+  <%= f.submit %>
+<% end %>
+
+<button>
+  <%= link_to 'Cancel', bands_path %>
+</button>

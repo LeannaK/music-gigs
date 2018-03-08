@@ -1,0 +1,17 @@
+<h1>Edit Gig</h1>
+
+<%= form_for [@venue, @gig] do |f| %>
+  Name of Event: <%= f.text_field :name %><br />
+  Date: <%= f.date_field :date %><br />
+  Time <%= f.time_field :time %><br />
+  Admission: $<%= f.text_field :cost %> <br>
+  Bands: <%= f.text_area :band %> <br>
+  Details: <%= f.text_area :description %> <br>
+  Related Links: <%= f.url_area :link %> <br>
+
+  <%= f.submit %>
+<% end %>
+<%= link_to 'Delete', venue_gig_path, method: :delete, data: {confirm: 'Are you sure?'} %>
+<button>
+  <%= link_to 'Cancel', venue_gig_path(@venue.id, @gig.id) %>
+</button>

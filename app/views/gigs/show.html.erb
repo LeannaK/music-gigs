@@ -1,0 +1,13 @@
+<h1><%= @gig.name %> at <%= @venue.name %></h1>
+
+<h3><%= @gig.band %></h3>
+<div>
+  <%= @venue.name %> <%= @venue.address %><br>
+  <%= @gig.date %> <%= @gig.time %><br>
+  Cover: $<%= @gig.cost %><br>
+  <%= @gig.link %><br>
+  <%= @gig.description %><br>
+</div>
+
+<%= link_to "Back to #{@venue.name}", venue_path(@venue.id) %>
+

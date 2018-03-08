@@ -1,0 +1,12 @@
+<h1>Bands</h1>
+<%= link_to 'Add Band', new_band_path %>
+<% @bands.each do |band| %>
+<ul>
+  <li>
+    <%= link_to band.name, band %> 
+    <%= band.location %>
+    <%= link_to 'Edit', edit_band_path %>
+    <%= link_to 'Delete', band_path, method: :delete, data: {confirm: 'Are you sure?'} %>
+  </li>
+<% end %>
+</ul>

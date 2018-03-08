@@ -1,0 +1,17 @@
+<h1>Add Venue</h1>
+
+<%= form_for @venue do |f| %>
+  Name: <%= f.text_field :name %><br />
+  Region: <%= f.text_field :location %><br />
+  Address: <%= f.text_field :address %><br />
+  Phone: <%= f.phone_field :phone %> <br>
+  Email: <%= f.email_field :email %> <br>
+  Booking Agent: <%= f.text_field :poc %> <br>
+  Description: <%= f.text_area :description %> <br>
+  Related Links: <%= f.url_field :link %> <br>
+
+  <%= f.submit %>
+<% end %>
+<button>
+  <%= link_to 'Cancel', venues_path %>
+</button>
