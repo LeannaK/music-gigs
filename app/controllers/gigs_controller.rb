@@ -65,6 +65,6 @@ if @venue.user != current_user
   end
 
   def gig_params
-    params.require(:gig).permit(:name, :date, :time, :band, :cost, :details, :link)
+    params.require(:gig).permit(:name, :date, :time, :band, :cost, :description, :link)
   end
 end
