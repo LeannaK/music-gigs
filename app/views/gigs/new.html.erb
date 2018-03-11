@@ -1,16 +1,28 @@
-<h1>Add Gig</h1>
-
-<%= form_for [@venue, @gig] do |f| %>
-  Name of Event: <%= f.text_field :name %><br />
-  Date: <%= f.date_field :date %><br />
-  Time <%= f.time_field :time %><br />
-  Admission: $<%= f.text_field :cost %> <br>
-  Bands: <%= f.text_area :band %> <br>
-  Details: <%= f.text_area :description %> <br>
-  Related Links: <%= f.url_field :link %> <br>
-
-  <%= f.submit %>
-<% end %>
-<button>
-  <%= link_to 'Cancel', venue_gigs_path(@venue.id) %>
-</button>
+<header class="w3-container w3-center w3-padding-32"> 
+  <h2 class="w3-wide"><i class="fa fa-music w3-margin-right"></i>Add Event</h2>
+</header>
+<div class="w3-container">
+  <%= form_for [@venue, @gig] do |f| %>
+  <div style="float: left; width: 49%">
+    <label> Event Name <span class="w3-opacity w3-center"><i>(Required)</i></span></label>
+    <%= f.text_field :name, class: "w3-input w3-border", placeholder: 'Event Name' %><br>
+    <label>Bands</label>
+    <%= f.text_area :band, class: "w3-input w3-border", placeholder: 'Bands' %><br>
+  </div>
+  <div style="float: right; width: 49%">
+    <label>Date</label> 
+    <%= f.date_field :date, class: "w3-input w3-border", placeholder: 'Date' %><br>
+    <label>Time</label> 
+    <%= f.time_field :time, class: "w3-input w3-border", placeholder: 'Time' %><br>
+    <label>Admission</label> 
+    <%= f.phone_field :cost, class: "w3-input w3-border", placeholder: 'Admission' %><br>
+  </div>
+  <div style="clear: both; width: 100%"
+  <label>Description</label>
+  <%= f.text_area :description, class: "w3-input w3-border", placeholder: 'Description' %><br>
+  <label>Related Links</label>
+  <%= f.url_field :link, class: "w3-input w3-border", placeholder: 'Related Links' %><br><br>
+  <%= f.submit "Add Event", class: 'w3-button w3-black w3-margin-bottom' %>
+  <% end %>
+  <%= link_to 'Cancel', venue_gigs_path(@venue), class: "w3-button w3-red w3-margin-bottom" %>
+</div>

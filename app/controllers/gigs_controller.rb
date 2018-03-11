@@ -8,10 +8,16 @@ class GigsController < ApplicationController
   end
 
   def new
+    if @venue.user != current_user
+      redirect_to venue_gigs_path(@venue), notice: 'You can only make edits to your own pages.'
+    end
     @gig = @venue.gigs.new
   end
 
   def create
+    if @venue.user != current_user
+      redirect_to venue_gigs_path(@venue), notice: 'You can only make edits to your own pages.'
+    end
     @gig = @venue.gigs.create(gig_params)
     if @gig.save
       redirect_to venue_gig_path(@venue.id, @gig.id), notice: 'Gig added.'
@@ -24,9 +30,15 @@ class GigsController < ApplicationController
   end
 
   def edit
+if @venue.user != current_user
+      redirect_to venue_gig_path(@venue.id, @gig.id), notice: 'You can only make edits to your own pages.'
+    end
   end
 
   def update
+if @venue.user != current_user
+      redirect_to venue_gig_path(@venue.id, @gig.id), notice: 'You can only make edits to your own pages.'
+    end
     if @gig.update(gig_params)
       redirect_to venue_gig_path(@venue.id, @gig.id), notice: 'Gig updated.'
     else
@@ -35,6 +47,9 @@ class GigsController < ApplicationController
   end
 
   def destroy
+    if @venue.user != current_user
+      redirect_to venue_gig_path(@venue.id, @gig.id), notice: 'You can only make edits to your own pages.'
+    end
     @gig.destroy
     redirect_to venue_gigs_path
   end

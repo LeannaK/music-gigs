@@ -1,16 +1,23 @@
-<h1>Gigs</h1>
-
-<%= link_to 'Add Gig', new_venue_gig_path %>
-
-<ul>
-<% @gigs.each do |gig| %>
-  <li>
-    <%= link_to gig.name, venue_gig_path(@venue.id, gig.id) %> 
-    <%= gig.date %> 
-    <%= link_to 'Edit', edit_venue_gig_path %>
-    <%= link_to 'Delete', venue_gig_path, method: :delete, data: {confirm: 'Are you sure?'} %>
-  </li> 
-<% end %>
-</ul>
-
-<%= link_to "Back to #{@venue.name}", venue_path(@venue.id) %>
+<header class="w3-container w3-center w3-padding-32"> 
+  <h2 class="w3-wide"><i class="fa fa-music w3-margin-right"></i>Events at <%= @venue.name %></h2>
+<h6><%= link_to "Back to #{@venue.name}", venue_path(@venue.id) %></h6>
+</header>
+<div class="w3-container w3-content w3-center w3-padding-64">
+<div class="w3-row-padding">
+  <div class="w3-card white">
+    <div class="w3-container w3-black">
+      <h3>Explore Events</h3>
+    </div>
+    <% @gigs.each do |gig| %>
+    <ul class="w3-ul w3-border-top">
+      <li>
+        <h3><%= link_to gig.name, venue_gig_path(@venue.id, gig.id), style:"text-decoration:none" %></h3>
+          <% date = gig.date %>
+        <p><%= date.to_formatted_s(:long) %></p>
+      </li>
+    <% end %>
+    </ul>
+    <div class="w3-container w3-black w3-large"><span class="w3-right"><%= link_to 'Add Event', new_venue_gig_path, style:"text-decoration:none"%></span></div>
+  </div>
+</div>
+</div>

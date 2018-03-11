@@ -24,9 +24,15 @@ class VenuesController < ApplicationController
   end
 
   def edit
+    if @venue.user != current_user
+      redirect_to @venue, notice: 'You can only make edits to your own pages.'
+    end
   end
 
   def update
+    if @venue.user != current_user
+      redirect_to @venue, notice: 'You can only make edits to your own pages.'
+    end
     if @venue.update(venue_params)
       redirect_to @venue, notice: 'Venue updated.'
     else
@@ -35,6 +41,9 @@ class VenuesController < ApplicationController
   end
 
   def destroy
+    if @venue.user != current_user
+      redirect_to @venue, notice: 'You can only make edits to your own pages.'
+    end
     @venue.destroy
     redirect_to venues_path
   end
@@ -42,7 +51,7 @@ class VenuesController < ApplicationController
   private
 
   def venue_params
-    params.require(:venue).permit(:name, :location, :address, :phone, :email, :poc, :description, :link)
+    params.require(:venue).permit(:name, :address, :phone, :email, :poc, :description, :link)
   end
 
   def find_venue

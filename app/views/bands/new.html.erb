@@ -1,18 +1,30 @@
-<h1>Edit Band</h1>
-
-<%= form_for @band do |f| %>
-  Name: <%= f.text_field :name %><br />
-  Genre: <%= f.text_field :genre %><br />
-  Location <%= f.text_field :location %><br />
-  Booking Agent: $<%= f.text_field :poc %> <br>
-  Phone: <%= f.phone_field :phone %> <br>
-  Email: <%= f.email_field :email %> <br>
-  Description: <%= f.text_area :description %> <br>
-  Related Links: <%= f.url_area :link %> <br>
-
-  <%= f.submit %>
-<% end %>
-
-<button>
-  <%= link_to 'Cancel', bands_path %>
-</button>
+<header class="w3-container w3-center w3-padding-32"> 
+  <h2 class="w3-wide"><i class="fa fa-music w3-margin-right"></i>Add Band</h2>
+</header>
+<div class="w3-container">
+  <%= form_for @band do |f| %>
+  <div style="float: left; width: 49%">
+    <label> Band Name <span class="w3-opacity w3-center"><i>(Required)</i></span></label>
+    <%= f.text_field :name, class: "w3-input w3-border", placeholder: 'Band Name' %><br>
+    <label> Genre <span class="w3-opacity w3-center"><i>(Required)</i></span></label>
+    <%= f.text_field :genre, class: "w3-input w3-border", placeholder: 'Genre' %><br>
+    <label>Location</label> 
+    <%= f.text_field :location, class: "w3-input w3-border", placeholder: 'Location' %><br>
+  </div>
+  <div style="float: right; width: 49%">
+    <label>Phone Number</label> 
+    <%= f.phone_field :phone, class: "w3-input w3-border", placeholder: 'Phone Number' %><br>
+    <label>Email</label>
+    <%= f.email_field :email, class: "w3-input w3-border", placeholder: 'Email' %><br>
+    <label>Booking Agent</label>
+    <%= f.text_field :poc, class: "w3-input w3-border", placeholder: 'Booking Agent' %><br>
+  </div>
+  <div style="clear: both; width: 100%"
+  <label>Description</label>
+  <%= f.text_area :description, class: "w3-input w3-border", placeholder: 'Description' %><br>
+  <label>Related Links</label>
+  <%= f.url_field :link, class: "w3-input w3-border", placeholder: 'Related Links' %><br><br>
+  <%= f.submit "Add Band", class: 'w3-button w3-black w3-margin-bottom' %>
+  <% end %>
+  <%= link_to 'Cancel', bands_path, class: "w3-button w3-red w3-margin-bottom" %>
+</div>

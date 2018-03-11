@@ -1,17 +1,28 @@
-<h1>Add Venue</h1>
-
-<%= form_for @venue do |f| %>
-  Name: <%= f.text_field :name %><br />
-  Region: <%= f.text_field :location %><br />
-  Address: <%= f.text_field :address %><br />
-  Phone: <%= f.phone_field :phone %> <br>
-  Email: <%= f.email_field :email %> <br>
-  Booking Agent: <%= f.text_field :poc %> <br>
-  Description: <%= f.text_area :description %> <br>
-  Related Links: <%= f.url_field :link %> <br>
-
-  <%= f.submit %>
-<% end %>
-<button>
-  <%= link_to 'Cancel', venues_path %>
-</button>
+<header class="w3-container w3-center w3-padding-32"> 
+  <h2 class="w3-wide"><i class="fa fa-music w3-margin-right"></i>Add Venue</h2>
+</header>
+<div class="w3-container">
+  <%= form_for @venue do |f| %>
+  <div style="float: left; width: 49%">
+    <label> Venue Name <span class="w3-opacity w3-center"><i>(Required)</i></span></label>
+    <%= f.text_field :name, class: "w3-input w3-border", placeholder: 'Venue Name' %><br>
+    <label>Address</label> 
+    <%= f.text_area :address, class: "w3-input w3-border", placeholder: 'Address' %><br>
+  </div>
+  <div style="float: right; width: 49%">
+    <label>Phone Number</label> 
+    <%= f.phone_field :phone, class: "w3-input w3-border", placeholder: 'Phone Number' %><br>
+    <label>Email</label>
+    <%= f.email_field :email, class: "w3-input w3-border", placeholder: 'Email' %><br>
+    <label>Booking Agent</label>
+    <%= f.text_field :poc, class: "w3-input w3-border", placeholder: 'Booking Agent' %><br>
+  </div>
+  <div style="clear: both; width: 100%"
+  <label>Description</label>
+  <%= f.text_area :description, class: "w3-input w3-border", placeholder: 'Description' %><br>
+  <label>Related Links</label>
+  <%= f.url_field :link, class: "w3-input w3-border", placeholder: 'Related Links' %><br><br>
+  <%= f.submit "Add Venue", class: 'w3-button w3-black w3-margin-bottom' %>
+  <% end %>
+  <%= link_to 'Cancel', venues_path, class: "w3-button w3-red w3-margin-bottom" %>
+</div>

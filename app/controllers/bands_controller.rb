@@ -24,9 +24,15 @@ class BandsController < ApplicationController
   end
 
   def edit
+    if @band.user != current_user
+      redirect_to @band, notice: 'You can only make edits to your own pages.'
+    end
   end
 
   def update
+    if @band.user != current_user
+      redirect_to @band, notice: 'You can only make edits to your own pages.'
+    end
     if @band.update(band_params)
       redirect_to @band, notice: 'Band updated.'
     else
@@ -35,6 +41,9 @@ class BandsController < ApplicationController
   end
 
   def destroy
+    if @band.user != current_user
+      redirect_to @band, notice: 'You can only make edits to your own pages.'
+    end
     @band.destroy
     redirect_to bands_path
   end

@@ -1,4 +1,4 @@
-class CreateVenues < ActiveRecord::Migration[5.1]
+sclass CreateVenues < ActiveRecord::Migration[5.1]
   def change
     create_table :venues do |t|
       t.belongs_to :user

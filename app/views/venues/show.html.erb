@@ -1,11 +1,47 @@
-<h1><%= @venue.name %></h1>
+<div class="w3-container w3-content w3-center w3-padding-64 w3-half" style="max-width:800px">
+  <h2 class="w3-wide"><%= @venue.name %></h2>
+  <p class="w3-opacity"><i><%= @venue.address %></i></p>
+  <p class="w3-justify w3-center"> <%= @venue.description %></p>
+  <p><%= link_to 'Calendar', venue_gigs_path(@venue),style:"text-decoration:none" %></p>
+</div>
+<div class="w3-half w3-padding-64"">
+  <iframe width="600" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=<%= @venue.address %>&key=<%= ENV['GOOGLE_MAPS_API_KEY'] %>" allowfullscreen></iframe>
+</div>
 
-<%= @venue.name %> <%= @venue.address%><br>
-<%= @venue.phone %> <%= @venue.email %><br>
-Contact <%= @venue.poc %> for Bookings<br>
-<%= @venue.link %><br>
-<%= @venue.description %><br>
-<%= link_to "Gigs at #{@venue.name}", venue_gigs_path(@venue.id) %><br><br>
-<%= link_to 'Back to Venues', venues_path %>
 
-<iframe width="600" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=<%= @venue.address %>&key=<%= ENV['GOOGLE_MAPS_API_KEY'] %>" allowfullscreen></iframe>
+
+<div class="w3-container w3-content w3-padding-64" style="max-width:800px" id="contact">
+  <h2 class="w3-wide w3-center">CONTACT</h2>
+  <p class="w3-opacity w3-center"><i>Contact <%= @venue.poc %> to gig here.</i></p>
+  <div class="w3-row w3-padding-32">
+    <div class="w3-col m6 w3-large w3-margin-bottom">
+      <i class="fa fa-map-marker" style="width:30px"></i> <%= @venue.address %><br>
+      <a href="tel:<%= @venue.phone %>" style="text-decoration:none">
+        <i class="fa fa-phone" style="width:30px"></i> Phone: <%= @venue.phone %><br>
+      </a>
+      <a href="mailto:<%= @venue.email %>" style="text-decoration:none">
+        <i class="fa fa-envelope" style="width:30px"> </i> Email: <%= @venue.email %><br>
+      </a>
+      <a href="<%= @venue.link %>" style="text-decoration:none">
+        <i class="fa fa-external-link-square" style="width:30px"> </i><%= @venue.link %><br>
+      </a>
+      </div>
+      <div class="w3-col m6">
+        <form action="/action_page.php" target="_blank">
+          <div class="w3-row-padding" style="margin:0 -16px 8px -16px">
+            <div class="w3-half">
+              <input class="w3-input w3-border" type="text" placeholder="Name" required name="Name">
+            </div>
+            <div class="w3-half">
+              <input class="w3-input w3-border" type="text" placeholder="Email" required name="Email">
+            </div>
+          </div>
+          <input class="w3-input w3-border" type="text" placeholder="Message" required name="Message">
+          <button class="w3-button w3-black w3-section w3-right" type="submit">SEND</button>
+        </form>
+      </div>
+    </div>
+</div>
+<footer class="w3-center">
+  Is this your page? Sign in and make edits <%= link_to 'here', edit_venue_path(@venue) %>.<br><br>
+</footer>

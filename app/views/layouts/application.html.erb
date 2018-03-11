@@ -1,7 +1,19 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>BookMe</title>
+    <link rel="shortcut icon" type="image/png" href="http://www.iconeasy.com/icon/png/System/Frenzic%20System/Music.png"/>
+    <title>Music-Gigs</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+    body {font-family: "Lato", sans-serif}
+    .mySlides {display: none}
+    </style>
+
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,16 +21,48 @@
   </head>
 
   <body>
-    <nav>
-      <% if current_user %>
-        <p>Hello, <%= current_user.email %>!
-        <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+    <!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-black w3-card">
+    <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    <%= link_to 'HOME', root_path, :class => "w3-bar-item w3-button w3-padding-large" %>
+    <%= link_to 'VENUES', venues_path, :class => "w3-bar-item w3-button w3-padding-large" %>
+    <%= link_to 'BANDS', bands_path, :class => "w3-bar-item w3-button w3-padding-large" %>
+    <% if current_user %>
+    <%= link_to 'Logout', destroy_user_session_path, method: :delete, :class => "w3-right w3-bar-item w3-button w3-padding-large" %>
+    <a href="/users/edit" class="w3-right w3-bar-item w3-button w3-padding-large">Hello, <%= current_user.email %>!</a>
       <% else %>
-        <%= link_to 'Register', new_user_registration_path %>
-        <%= link_to 'Login', new_user_session_path %>
+        <%= link_to 'Register', new_user_registration_path, :class => "w3-right w3-bar-item w3-button w3-padding-large" %></a>
+        <%= link_to 'Login', new_user_session_path, :class => "w3-right w3-bar-item w3-button w3-padding-large" %></a>
       <% end %>
-    </nav>
+  </div>
+</div>
+
+<!-- Navbar on small screens -->
+    <div id="navDemo" class="w3-bar-block w3-black w3-hide w3-hide-large w3-hide-medium w3-top" style="margin-top:46px">
+      <a href="/venues" class="w3-bar-item w3-button w3-padding-large">VENUES</a>
+      <a href="/bands" class="w3-bar-item w3-button w3-padding-large">BANDS</a>
+      <% if current_user %>
+        <a href="#" class="w3-bar-item w3-button w3-padding-large">Hello, <%= current_user.email %>!</a>
+        <%= link_to 'Logout', destroy_user_session_path, method: :delete, :class => "w3-bar-item w3-button w3-padding-large" %>
+      <% else %>
+        <%= link_to 'Register', new_user_registration_path, :class => "w3-bar-item w3-button w3-padding-large" %></a>
+        <%= link_to 'Login', new_user_session_path, :class => "w3-bar-item w3-button w3-padding-large" %></a>
+      <% end %>
+    </div>
+    <div class="w3-content" style="max-width:98%;margin-top:46px">
     <p id="notice"><%= notice %></p>
     <%= yield %>
+    <script>
+      // Used to toggle the menu on small screens when clicking on the menu button
+      function myFunction() {
+        var x = document.getElementById("navDemo");
+        if (x.className.indexOf("w3-show") == -1) {
+          x.className += " w3-show";
+        } else { 
+          x.className = x.className.replace(" w3-show", "");
+        }
+      }
+    </script>
   </body>
 </html>
